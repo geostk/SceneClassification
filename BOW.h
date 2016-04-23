@@ -39,25 +39,30 @@ public:
         {
             for(int i=0; i<c_iter->second.size(); i++)
             {
+                
                 CImg<float> img(c_iter->second[i].c_str());
-                
-                std::vector<SiftDescriptor> img_sift_descriptors = Sift::compute_sift(img.blur(2.0,true,true));
-                
-                int num_descriptors = 0;
-                num_images++;
-                for(int j=0; j< (int)img_sift_descriptors.size(); j++)
+                img = img.blur(2.0,true,true);
+                for(int size=0; size<3; size++)
                 {
-                    if((int) (img_sift_descriptors[j].descriptor.size())==128)
+                    img = img.resize_halfXY();
+                    std::vector<SiftDescriptor> img_sift_descriptors = Sift::compute_sift(img);
+                
+                    int num_descriptors = 0;
+                    num_images++;
+                    for(int j=0; j< (int)img_sift_descriptors.size(); j++)
                     {
-                        training_descriptors.push_back(img_sift_descriptors[j].descriptor);
-                        num_descriptors++;
+                        if((int) (img_sift_descriptors[j].descriptor.size())==128)
+                        {
+                            training_descriptors.push_back(img_sift_descriptors[j].descriptor);
+                            num_descriptors++;
+                        }
+                        else
+                        {
+                            cout<<endl<<"\nError Computing Sift";
+                        }
                     }
-                    else
-                    {
-                        cout<<endl<<"\nError Computing Sift";
-                    }
+                    descriptor_counts.push_back(num_descriptors);
                 }
-                descriptor_counts.push_back(num_descriptors);
             }
         }
         
