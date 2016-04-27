@@ -39,30 +39,25 @@ public:
         {
             for(int i=0; i<c_iter->second.size(); i++)
             {
-                
                 CImg<float> img(c_iter->second[i].c_str());
-                img = img.blur(2.0,true,true);
-                for(int size=0; size<3; size++)
-                {
-                    img = img.resize_halfXY();
-                    std::vector<SiftDescriptor> img_sift_descriptors = Sift::compute_sift(img);
                 
-                    int num_descriptors = 0;
-                    num_images++;
-                    for(int j=0; j< (int)img_sift_descriptors.size(); j++)
+                std::vector<SiftDescriptor> img_sift_descriptors = Sift::compute_sift(img.blur(2.0,true,true).resize_halfXY().resize_halfXY().resize_halfXY());
+                
+                int num_descriptors = 0;
+                num_images++;
+                for(int j=0; j< (int)img_sift_descriptors.size(); j++)
+                {
+                    if((int) (img_sift_descriptors[j].descriptor.size())==128)
                     {
-                        if((int) (img_sift_descriptors[j].descriptor.size())==128)
-                        {
-                            training_descriptors.push_back(img_sift_descriptors[j].descriptor);
-                            num_descriptors++;
-                        }
-                        else
-                        {
-                            cout<<endl<<"\nError Computing Sift";
-                        }
+                        training_descriptors.push_back(img_sift_descriptors[j].descriptor);
+                        num_descriptors++;
                     }
-                    descriptor_counts.push_back(num_descriptors);
+                    else
+                    {
+                        cout<<endl<<"\nError Computing Sift";
+                    }
                 }
+                descriptor_counts.push_back(num_descriptors);
             }
         }
         
@@ -78,7 +73,7 @@ public:
             }
         }
         
-        int k = 250;
+        int k = 2000;
         
         cout<<"\n Clustering ..\n"<<descriptors.rows<<" descriptors";
         
