@@ -1,0 +1,17 @@
+	suburb	coast	forest	highway	insidec	mountai	opencou	street	tallbui	office	bedroom	industr	kitchen	livingr	store
+suburb	  |0|	   0	   12	   4	   5	   1	   1	   24	   0	   0	   0	   0	   0	   3	   0	  
+coast	   0	  |23|	   1	   15	   0	   1	   10	   0	   0	   0	   0	   0	   0	   0	   0	  
+forest	   0	   0	  |49|	   0	   0	   1	   0	   0	   0	   0	   0	   0	   0	   0	   0	  
+highway	   0	   0	   0	  |49|	   0	   0	   1	   0	   0	   0	   0	   0	   0	   0	   0	  
+insidec	   0	   1	   5	   0	  |19|	   0	   2	   17	   3	   1	   1	   0	   0	   0	   1	  
+mountai	   0	   0	   20	   4	   0	  |17|	   6	   3	   0	   0	   0	   0	   0	   0	   0	  
+opencou	   0	   5	   14	   6	   0	   0	  |24|	   1	   0	   0	   0	   0	   0	   0	   0	  
+street	   0	   0	   3	   0	   0	   1	   0	  |45|	   1	   0	   0	   0	   0	   0	   0	  
+tallbui	   0	   0	   2	   0	   1	   0	   0	   0	  |47|	   0	   0	   0	   0	   0	   0	  
+office	   0	   0	   1	   2	   6	   2	   0	   1	   11	  |17|	   0	   0	   1	   8	   1	  
+bedroom	   0	   0	   8	   3	   1	   0	   1	   2	   10	   5	  |11|	   0	   2	   6	   1	  
+industr	   0	   0	   19	   1	   4	   2	   2	   4	   7	   1	   0	  |5|	   1	   1	   3	  
+kitchen	   0	   0	   2	   1	   3	   1	   1	   2	   10	   0	   2	   0	  |15|	   10	   3	  
+livingr	   0	   0	   8	   1	   1	   0	   0	   3	   8	   4	   0	   0	   4	  |19|	   2	  
+store	   0	   0	   30	   0	   2	   0	   2	   0	   7	   0	   0	   0	   0	   0	  |9|	  
+Accuracy = 46.53333333333333
